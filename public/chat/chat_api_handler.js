@@ -8,6 +8,7 @@ WildRydes.map = WildRydes.map || {};
     WildRydes.authToken.then(function setAuthToken(token) {
         if (token) {
             authToken = token;
+            sendUserMessage('hello')
         } else {
             window.location.href = '/signin.html';
         }
@@ -15,18 +16,17 @@ WildRydes.map = WildRydes.map || {};
         alert(error);
         window.location.href = '/signin.html';
     });
-    function requestUnicorn(pickupLocation) {
+
+    function sendUserMessage(message) {
         $.ajax({
             method: 'POST',
-            url: _config.api.invokeUrl + '/ride',
+            crossDomain: true,
+            url: _config.api.invokeUrl + '/requestfood',
             headers: {
                 Authorization: authToken
             },
             data: JSON.stringify({
-                PickupLocation: {
-                    Latitude: pickupLocation.latitude,
-                    Longitude: pickupLocation.longitude
-                }
+                chatText: message
             }),
             contentType: 'application/json',
             success: completeRequest,
@@ -39,18 +39,8 @@ WildRydes.map = WildRydes.map || {};
     }
 
     function completeRequest(result) {
-        var unicorn;
-        var pronoun;
-        console.log('Response received from API: ', result);
-        unicorn = result.Unicorn;
-        pronoun = unicorn.Gender === 'Male' ? 'his' : 'her';
-        displayUpdate(unicorn.Name + ', your ' + unicorn.Color + ' unicorn, is on ' + pronoun + ' way.');
-        animateArrival(function animateCallback() {
-            displayUpdate(unicorn.Name + ' has arrived. Giddy up!');
-            WildRydes.map.unsetLocation();
-            $('#request').prop('disabled', 'disabled');
-            $('#request').text('Set Pickup');
-        });
+        var botResponse = result;
+        console.log('Response from server: ', result);
     }
 
     // Register click handler for #request button

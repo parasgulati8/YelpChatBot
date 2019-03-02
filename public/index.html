@@ -2,34 +2,29 @@
   <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="index.css" rel="stylesheet"/>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
   <body>
       <!------ Include the above in your HEAD tag ---------->
       <div class="container">
           <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+                <!-- <p class="authToken"></p> -->
               <div class="col-xs-12 col-md-12">
                 <div class="panel panel-default">
                       <div class="panel-heading top-bar">
                           <div class="col-md-8 col-xs-8">
-                              <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
+                              <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chatbot</h3>
                           </div>
                           <div class="col-md-4 col-xs-4" style="text-align: right;">
                               <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
-                              <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
+                              <!-- <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a> -->
                           </div>
                       </div>
                       <div class="panel-body msg_container_base">
+                          
                           <div class="row msg_container base_sent">
                               <div class="col-md-10 col-xs-10">
                                   <div class="messages msg_sent">
-                                      <p>that mongodb thing looks good, huh?
-                                      tiny master db, and huge document store</p>
+                                      <p>Hello there. How are you?</p>
                                       <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                                   </div>
                               </div>
@@ -37,6 +32,7 @@
                                   <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
                               </div>
                           </div>
+
                           <div class="row msg_container base_receive">
                               <div class="col-md-2 col-xs-2 avatar">
                                   <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
@@ -49,6 +45,7 @@
                                   </div>
                               </div>
                           </div>
+
                           <div class="row msg_container base_receive">
                               <div class="col-md-2 col-xs-2 avatar">
                                   <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
@@ -61,6 +58,7 @@
                                   </div>
                               </div>
                           </div>
+                          
                           <div class="row msg_container base_sent">
                               <div class="col-xs-10 col-md-10">
                                   <div class="messages msg_sent">
@@ -73,6 +71,7 @@
                                   <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
                               </div>
                           </div>
+                          
                           <div class="row msg_container base_receive">
                               <div class="col-md-2 col-xs-2 avatar">
                                   <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
@@ -124,6 +123,14 @@
               </ul>
           </div>
       </div>
+      <script src="/lib/jquery-3.1.0.js"></script>
+      <script src="/lib/bootstrap.min.js"></script>
+      <script src="/lib/aws-cognito-sdk.min.js"></script>
+      <script src="/lib/amazon-cognito-identity.min.js"></script>
+      <script src="/auth/js/config.js"></script>
+      <script src="/auth/js/cognito-auth.js"></script>
+
+      <script src="/chat/chat_api_handler.js"></script>
       <script src="index.js"> </script>
 </body>
 </html>
