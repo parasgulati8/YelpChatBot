@@ -3,7 +3,7 @@
 var WildRydes = window.WildRydes || {};
 
 (function scopeWrapper($) {
-    var signinUrl = '/signin.html';
+    var signinUrl = '/auth/signin.html';
 
     var poolData = {
         UserPoolId: _config.cognito.userPoolId,
@@ -58,8 +58,11 @@ var WildRydes = window.WildRydes || {};
             Value: email
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-
-        userPool.signUp(email, password, [attributeEmail], null,
+        var attributeUserId = new AmazonCognitoIdentity.CognitoUserAttribute({
+            Name : 'custom:userId',
+            Value : makeId()
+        });
+        userPool.signUp(email, password, [attributeEmail, attributeUserId], null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
@@ -99,6 +102,16 @@ var WildRydes = window.WildRydes || {};
             Pool: userPool
         });
     }
+
+    function makeId() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 20; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;
+      }
 
     /*
      *  Event Handlers

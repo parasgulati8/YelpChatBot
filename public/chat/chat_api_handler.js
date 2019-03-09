@@ -8,16 +8,15 @@ WildRydes.map = WildRydes.map || {};
     WildRydes.authToken.then(function setAuthToken(token) {
         if (token) {
             authToken = token;
-            sendUserMessage('hello')
         } else {
-            window.location.href = '/signin.html';
+            window.location.href = 'auth/signin.html';
         }
     }).catch(function handleTokenError(error) {
         alert(error);
         window.location.href = '/signin.html';
     });
 
-    function sendUserMessage(message) {
+    WildRydes.sendUserMessage = (message) => {
         $.ajax({
             method: 'POST',
             crossDomain: true,
@@ -39,8 +38,8 @@ WildRydes.map = WildRydes.map || {};
     }
 
     function completeRequest(result) {
-        var botResponse = result;
-        console.log('Response from server: ', result);
+        var replyText = result;
+        WildRydes.onReplyTextReceived(replyText);
     }
 
     // Register click handler for #request button

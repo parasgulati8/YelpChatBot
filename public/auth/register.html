@@ -11,49 +11,58 @@
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <link rel="stylesheet" href="css/font.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/message.css">
+        <link rel="stylesheet" href="signin.css">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
 
-        <div id="noCognitoMessage" class="configMessage" style="display: none;">
-            <div class="backdrop"></div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">No Cognito User Pool Configured</h3>
-                </div>
-                <div class="panel-body">
-                    <p>There is no user pool configured in <a href="/js/config.js">/js/config.js</a>. You'll configure this in Module 2 of the workshop.</p>
-                </div>
-            </div>
-        </div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-        <header>
-          <img src="images/logo.png">
-        </header>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-        <section class="form-wrap">
-            <h1>Register</h1>
-            <form id="registrationForm">
-              <input type="email" id="emailInputRegister" placeholder="Email" pattern=".*" required>
-              <input type="password" id="passwordInputRegister" placeholder="Password" pattern=".*" required>
-              <input type="password" id="password2InputRegister" placeholder="Confirm Password" pattern=".*" required>
+    <div id="noCognitoMessage" class="configMessage" style="display: none;">
+      <div class="backdrop"></div>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">No Cognito User Pool Configured</h3>
+          </div>
+          <div class="panel-body">
+              <p>There is no user pool configured in <a href="/js/config.js">/js/config.js</a>. You'll configure this in Module 2 of the workshop.</p>
+          </div>
+      </div>
+    </div>
 
-              <input type="submit" value="Let's Ryde">
-            </form>
-        </section>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
 
-        <script src="js/vendor/jquery-3.1.0.js"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/vendor/aws-cognito-sdk.min.js"></script>
-        <script src="js/vendor/amazon-cognito-identity.min.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/cognito-auth.js"></script>
-    </body>
+    <!-- Login Form -->
+    <form id="registrationForm">
+      <input type="text" id="emailInputRegister" class="fadeIn second" name="login" placeholder="email">
+      <input type="text" id="passwordInputRegister"  class="fadeIn third" name="login" placeholder="password">
+      <input type="text" id="password2InputRegister"  class="fadeIn third" name="login" placeholder="password">
+      <input type="submit" class="fadeIn fourth">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/lib/jquery-3.1.0.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+<script src="/lib/aws-cognito-sdk.min.js"></script>
+<script src="/lib/amazon-cognito-identity.min.js"></script>
+<script src="/auth/js/config.js"></script>
+<script src="/auth/js/cognito-auth.js"></script>
+</body>
 </html>
