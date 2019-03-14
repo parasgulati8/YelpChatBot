@@ -6,7 +6,7 @@ class UserDataFetcher:
         self.event = event
 
     def fetchUserId(self):
-        return self.event['requestContext']['authorizer']['claims']['custom:userId']
+        return self.event['requestContext']['identity']['user'].split(':')[0]
 
     def fetchUserRequestObject(self):
         print(self.event['body'])
