@@ -1,14 +1,16 @@
 var MODE = "PROD"
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?#&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
+function getUrlParam(paramKey) {
+    let paramValue;
+    window.location.href.replace(/[?#&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        if (key == paramKey) {
+            paramValue = value
+        }
     });
-    return vars;
+    return paramValue;
 }
 
-var id_token = getUrlVars()['id_token'];
+var id_token = getUrlParam('id_token');
 
 if (!id_token) {
     if (MODE == "DEV") {
@@ -27,13 +29,13 @@ if (!id_token) {
         }
     });
     var apigClient;
-    AWS.config.credentials.refresh(function(){
-        var accessKeyId = AWS.config.credentials.accessKeyId;
-        var secretAccessKey = AWS.config.credentials.secretAccessKey;
-        var sessionToken = AWS.config.credentials.sessionToken;
-        console.log("Set with"+accessKeyId);
-        console.log("Set with"+secretAccessKey);
-        console.log("Set with"+sessionToken);
+    AWS.config.credentials.refresh(() => {
+        // var accessKeyId = AWS.config.credentials.accessKeyId;
+        // var secretAccessKey = AWS.config.credentials.secretAccessKey;
+        // var sessionToken = AWS.config.credentials.sessionToken;
+        // console.log(accessKeyId);
+        // console.log(secretAccessKey);
+        // console.log(sessionToken);
         AWS.config.region = 'us-east-1';
         apigClient = apigClientFactory.newClient({
             accessKey: AWS.config.credentials.accessKeyId,
