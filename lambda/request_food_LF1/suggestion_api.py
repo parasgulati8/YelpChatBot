@@ -22,6 +22,26 @@ def request_yelp_suggestions(category, location):
     request_type = 'GET'
 
     response = requests.request(request_type, url, headers=headers)
+   
+    data =response.json()
+    restaurants=[];
 
-    return str(response.json())
+    for business in data[constant.DiningSuggestionsIntent.YELP_API_RESPONSE_JSON_BUSINESS]:
+        restaurant={}
+        restaurant["name"] = business[constant.DiningSuggestionsIntent.YELP_API_RESPONSE_JSON_NAME]
+        location = ""
+        for address in business[constant.DiningSuggestionsIntent.YELP_API_RESPONSE_JSON_LOCATION][constant.DiningSuggestionsIntent.YELP_API_RESPONSE_JSON_DISPLAYADDRESS]:
+            location =location +" ,"+ address
+        restaurant["location"] = location
+        
+        restaurants.append(restaurant)
+
+    endstring = ''
+    for i in range(1, len(restaurants)):
+        str_each = str(i)+". "+restaurants[i]["name"]+restaurants[i]["location"]+ "; "
+        endstring += str_each
+
+    print(endstring)
+    endstring="Here are my suggestions for you "+endstring+" Enjoy your meal!!"
+    return endstring
 

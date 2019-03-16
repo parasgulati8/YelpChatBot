@@ -38,6 +38,11 @@ class DiningSuggestionsIntent:
     YELP_API_URL_PARAM_LOCATION = "@LOCATION"
     YELP_API_URL_PARAM_CATEGORY = "@CATEGORY"
     YELP_API_URL_PARAM_LIMIT = "@LIMIT"
+    
+    YELP_API_RESPONSE_JSON_BUSINESS = "businesses"
+    YELP_API_RESPONSE_JSON_NAME="name"
+    YELP_API_RESPONSE_JSON_LOCATION="location"
+    YELP_API_RESPONSE_JSON_DISPLAYADDRESS="display_address"
 
 
     class CodeHooks:
