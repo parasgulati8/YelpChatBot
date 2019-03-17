@@ -11,7 +11,7 @@ class DiningSuggestionsIntent:
     SLOT_NAME_TIME = 'Time'
 
     VALID_CUISINES_UPPERCASE = ['THAI', 'INDIAN', 'CHINESE', 'ITALIAN', 'MEXICAN', 'JAPANESE']
-    VALID_LOCATIONS_UPPERCASE = ['BROOKLYN', 'MANHATTAN']
+    VALID_LOCATIONS_UPPERCASE = ['BROOKLYN', 'MANHATTAN', 'QUEENS', 'BRONX', 'STATEN ISLAND']
     VALID_MAX_PARTY_PEOPLE = 10
     VALID_MIN_PARTY_PEOPLE = 1
 
@@ -24,11 +24,11 @@ class DiningSuggestionsIntent:
     }
 
     SLOT_INVALID_RESPONSES = {
-        SLOT_NAME_LOCATION: 'I`m sorry. The only available locations are Brooklyn and Manhattan',
-        SLOT_NAME_CUISINE: 'I`m sorry. Only available cuisines are that, indian, chinese, italian, mexican and japanese',
-        SLOT_NAME_PARTY_PEOPLE: 'I`m sorry number of people must be atleast 1 and less than 10',
-        SLOT_NAME_DATE: 'Which date are you looking for?',
-        SLOT_NAME_TIME: 'Which time are you looking for?'
+        SLOT_NAME_LOCATION: 'I`m sorry. The only available locations are Brooklyn, Manhattan, Qeeens, Bronx and Staten Island. Can you try again?',
+        SLOT_NAME_CUISINE: 'I`m sorry. Only available cuisines are thai, indian, chinese, italian, mexican and japanese. Can you try again?',
+        SLOT_NAME_PARTY_PEOPLE: 'I`m sorry number of people must be atleast 1 and less than 10. Can you try again?',
+        SLOT_NAME_DATE: 'I`m sorry you can`t have a date in the past. Can you try again?',
+        SLOT_NAME_TIME: 'I`m sorry that seems to be an invalid response. Can you try again?'
     }
 
     SLOT_VALIDATE_SUCCESS_RESPONSE = 'Alright. Please wait while I fetch some suggestions for you.'

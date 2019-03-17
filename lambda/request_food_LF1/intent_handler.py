@@ -1,7 +1,7 @@
 import constant
 import suggestion_api
 from lambda_params import LambdaResponse
-
+import datetime
 
 def handle_intent(lambdaParams):
     intent_name = lambdaParams.get_requested_intent_name()
@@ -42,6 +42,7 @@ class DiningSuggestionIntentHelpers:
             if not slot_value:    # If slot is not present, elicit that slot
                 return self.build_elicit_slot_response(slot_name, constant.DiningSuggestionsIntent.SLOT_ELICIT_RESPONSES[slot_name])
             else:   # If slot is present, but is invalid, elicit that slot again
+                print(slot_name, self.lambdaParams.event)
                 if slot_name == constant.DiningSuggestionsIntent.SLOT_NAME_CUISINE:
                     if not self.is_valid_cuisine():
                         return self.build_elicit_slot_response(slot_name, constant.DiningSuggestionsIntent.SLOT_INVALID_RESPONSES[slot_name])
@@ -88,7 +89,9 @@ class DiningSuggestionIntentHelpers:
                         <= constant.DiningSuggestionsIntent.VALID_MAX_PARTY_PEOPLE
 
     def is_valid_date(self):
-        return True
+        dateString = self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_DATE]
+        date = datetime.datetime.strptime(dateString, "%Y-%m-%d")
+        return date.date() >= datetime.date.today()
 
     def is_valid_time(self):
         return True

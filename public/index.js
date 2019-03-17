@@ -28,8 +28,8 @@ onUserSendMessage = () => {
             </div>
     `);
     $('#btn-input').val('')
-    animateIncomingMessage().then(()=>{
-        sendUserMessage(userText, (replyText)=>{
+    animateIncomingMessage().then(() => {
+        sendUserMessage(userText, (replyText) => {
             onReplyReceived(replyText)
         });
     })
