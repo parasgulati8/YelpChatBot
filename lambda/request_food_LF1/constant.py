@@ -34,10 +34,11 @@ class DiningSuggestionsIntent:
     SLOT_VALIDATE_SUCCESS_RESPONSE = 'Alright. Please wait while I fetch some suggestions for you.'
 
     YELP_API_KEY = "0EbA0ZINSb_iiHd_YB2EvHir88SKMFC3fAEyC9gRP5HByf_l5-daiRvcTOTNFyhWFBJhgEOlqezAdwgrlhmvnxYYrWHBVz9j3yZj3TsKgHcmsBBDUkidhfHI8258XHYx"
-    YELP_API_URL_TEMPLATE = "https://api.yelp.com/v3/businesses/search?term=Restaurants&location=@LOCATION&categories=@CATEGORY&limit=@LIMIT&sort_by=best_match"
+    YELP_API_URL_TEMPLATE = "https://api.yelp.com/v3/businesses/search?term=Restaurants&location=@LOCATION&categories=@CATEGORY&open_at=@OPENAT&limit=@LIMIT&sort_by=best_match"
     YELP_API_URL_PARAM_LOCATION = "@LOCATION"
     YELP_API_URL_PARAM_CATEGORY = "@CATEGORY"
     YELP_API_URL_PARAM_LIMIT = "@LIMIT"
+    YELP_API_URL_PARAM_OPEN_AT = "@OPENAT"
     
     YELP_API_RESPONSE_JSON_BUSINESS = "businesses"
     YELP_API_RESPONSE_JSON_NAME="name"

@@ -103,9 +103,9 @@ class DiningSuggestionIntentHelpers:
             suggestion_api.suggest_restaurants(
                 self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_CUISINE],
                 self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_LOCATION],
-                None,
-                None,
-                None
+                self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_PARTY_PEOPLE],
+                self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_DATE],
+                self.lambdaParams.get_slots()[constant.DiningSuggestionsIntent.SLOT_NAME_TIME]
             )
         )
 

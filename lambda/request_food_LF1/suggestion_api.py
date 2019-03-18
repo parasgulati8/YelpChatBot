@@ -1,14 +1,17 @@
 import constant
 from botocore.vendored import requests
+import datetime
+import time as pythontime
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.parse import urlencode
 
 def suggest_restaurants(cuisine, location, party_people, date, time):
-    return request_yelp_suggestions(cuisine, location)
+    pdatetime = datetime.datetime.strptime(date + ' ' + time, '%Y-%m-%d %H:%M')
+    return request_yelp_suggestions(cuisine, location, int(pythontime.mktime(pdatetime.timetuple())))
 
 
-def request_yelp_suggestions(category, location):
+def request_yelp_suggestions(category, location, open_at_unix_seconds):
     headers = {
         'Authorization': 'Bearer %s' %constant.DiningSuggestionsIntent.YELP_API_KEY,
     }
@@ -18,11 +21,12 @@ def request_yelp_suggestions(category, location):
         constant.DiningSuggestionsIntent.YELP_API_URL_PARAM_CATEGORY, category
     ).replace(
         constant.DiningSuggestionsIntent.YELP_API_URL_PARAM_LIMIT, '5'
+    ).replace(
+        constant.DiningSuggestionsIntent.YELP_API_URL_PARAM_OPEN_AT, str(open_at_unix_seconds)
     )
     request_type = 'GET'
-
     response = requests.request(request_type, url, headers = headers)
-   
+
     data = response.json()
 
     restaurants=[]
@@ -42,6 +46,6 @@ def request_yelp_suggestions(category, location):
         endstring += str_each
 
     print(endstring)
-    endstring="Here are my suggestions for you "+endstring+" Enjoy your meal!!"
+    endstring = "Here are my suggestions for you "+endstring+" Enjoy your meal!!"
     return endstring
 

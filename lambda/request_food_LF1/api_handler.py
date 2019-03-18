@@ -10,7 +10,6 @@ from lambda_params import LambdaParams
 LOGGER = logging.getLogger()
 
 def lambda_handler(event, context):
-    LOGGER.debug('event.bot.name={}'.format(event['bot']['name']))
     initTimeZone()
     lambdaParams = LambdaParams(event, context)
     return dispatch(lambdaParams)
