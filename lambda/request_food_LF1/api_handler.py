@@ -22,4 +22,3 @@ def dispatch(lambdaParams):
     response = intent_handler.handle_intent(lambdaParams)
     print('Responding with: ', response)
     return response
-    pass
